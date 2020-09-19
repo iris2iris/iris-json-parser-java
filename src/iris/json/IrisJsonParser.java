@@ -2,7 +2,7 @@ package iris.json;
 
 import java.util.ArrayList;
 
-class IrisJsonParser {
+public class IrisJsonParser {
 
 	private final String array;
 	private int counter = 0;

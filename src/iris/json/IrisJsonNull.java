@@ -12,22 +12,22 @@ class IrisJsonNull extends IrisJsonItem {
 	public static final IrisJsonNull Null = new IrisJsonNull();
 
 	@Override
-	IrisJsonItem get(int ind) {
+	public IrisJsonItem get(int ind) {
 		return this;
 	}
 
 	@Override
-	IrisJsonItem get(String key) {
+	public IrisJsonItem get(String key) {
 		return this;
 	}
 
 	@Override
-	Object obj() {
+	public Object obj() {
 		return null;
 	}
 
 	@Override
-	<A extends Appendable> A joinTo(A buffer) throws IOException {
+	public <A extends Appendable> A joinTo(A buffer) throws IOException {
 		buffer.append("null");
 		return buffer;
 	}

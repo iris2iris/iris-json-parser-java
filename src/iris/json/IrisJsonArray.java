@@ -15,7 +15,7 @@ class IrisJsonArray extends IrisJsonItem {
 	}
 
 	@Override
-	<A extends Appendable> A joinTo(A buffer) throws IOException {
+	public <A extends Appendable> A joinTo(A buffer) throws IOException {
 		buffer.append('[');
 		var firstDone = false;
 		for (IrisJsonItem i : items) {
@@ -31,12 +31,12 @@ class IrisJsonArray extends IrisJsonItem {
 	}
 
 	@Override
-	IrisJsonItem get(int ind) {
+	public IrisJsonItem get(int ind) {
 		return items.get(ind);
 	}
 
 	@Override
-	IrisJsonItem get(String key) {
+	public IrisJsonItem get(String key) {
 		var ind = Integer.parseInt(key);
 		return get(ind);
 	}
@@ -44,7 +44,7 @@ class IrisJsonArray extends IrisJsonItem {
 	private Object obj;
 
 	@Override
-	Object obj() {
+	public Object obj() {
 		if (obj != null)
 			return obj;
 		var res = new LinkedList<>();

@@ -31,7 +31,7 @@ class IrisJsonObject extends IrisJsonItem {
 	}
 
 	@Override
-	<A extends Appendable> A joinTo(A buffer) throws IOException {
+	public <A extends Appendable> A joinTo(A buffer) throws IOException {
 		buffer.append("{");
 		var firstDone = false;
 		for (Entry entry : entries) {
@@ -50,12 +50,12 @@ class IrisJsonObject extends IrisJsonItem {
 	}
 
 	@Override
-	IrisJsonItem get(int ind) {
+	public IrisJsonItem get(int ind) {
 		return get(String.valueOf(ind));
 	}
 
 	@Override
-	IrisJsonItem get(String key) {
+	public IrisJsonItem get(String key) {
 		var res = getMap().get(key);
 		if (res == null)
 			return IrisJsonNull.Null;
@@ -79,7 +79,7 @@ class IrisJsonObject extends IrisJsonItem {
 	private Object obj;
 
 	@Override
-	Object obj() {
+	public Object obj() {
 		if (obj != null)
 			return obj;
 		var res = new HashMap<String, Object>();

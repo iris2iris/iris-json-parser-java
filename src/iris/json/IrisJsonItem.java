@@ -7,7 +7,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
-abstract class IrisJsonItem {
+public abstract class IrisJsonItem {
 
 	protected IrisJson.Type type;
 
@@ -15,10 +15,10 @@ abstract class IrisJsonItem {
 		this.type = type;
 	}
 
-	abstract IrisJsonItem get(int ind);
-	abstract IrisJsonItem get(String key);
-	abstract Object obj();
-	abstract <A extends Appendable> A joinTo(A buffer) throws IOException;
+	public abstract IrisJsonItem get(int ind);
+	public abstract IrisJsonItem get(String key);
+	public abstract Object obj();
+	public abstract <A extends Appendable> A joinTo(A buffer) throws IOException;
 
 	public String toString() {
 		try {
