@@ -42,7 +42,7 @@ class IrisJsonParser {
 			var start = counter;
 			readString();
 			var end = counter - 1;
-			counter++; // поправка, т.к. мы вышли из строки, узнав про кавычку. на неё и двигаемся
+			//counter++; // поправка, т.к. мы вышли из строки, узнав про кавычку. на неё и двигаемся
 			return new IrisJsonString(new IrisSequence(array, start, end));
 		} else if (type == IrisJson.Type.Array) {
 			return readArray();

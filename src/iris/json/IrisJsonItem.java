@@ -28,32 +28,52 @@ abstract class IrisJsonItem {
 		}
 	}
 
-	public Integer asInt() {
+	public Integer asIntOrNull() {
 		var obj = obj();
-		return obj == null? null : ((Number)obj()).intValue();
+		return obj == null? null : ((Number)obj).intValue();
+	}
+
+	public Integer asInt() {
+		return ((Number)obj()).intValue();
+	}
+
+	public Long asLongOrNull() {
+		var obj = obj();
+		return obj == null? null : ((Number)obj).longValue();
 	}
 
 	public Long asLong() {
+		return ((Number)obj()).longValue();
+	}
+
+	public Double asDoubleOrNull() {
 		var obj = obj();
-		return obj == null? null : ((Number)obj()).longValue();
+		return obj == null? null : ((Number)obj).doubleValue();
 	}
 
 	public Double asDouble() {
+		return ((Number)obj()).doubleValue();
+	}
+
+	public Float asFloatOrNull() {
 		var obj = obj();
-		return obj == null? null : ((Number)obj()).doubleValue();
+		return obj == null? null : ((Number)obj).floatValue();
 	}
 
 	public Float asFloat() {
+		return ((Number)obj()).floatValue();
+	}
+
+	public Boolean asBooleanOrNull() {
 		var obj = obj();
-		return obj == null? null : ((Number)obj()).floatValue();
+		return obj == null? null : (boolean)obj;
 	}
 
 	public Boolean asBoolean() {
-		var obj = obj();
-		return obj == null? null : (boolean)obj();
+		return (boolean)obj();
 	}
 
-	public <A>List<A> asList() {
+	public <A>List<A> asListOrNull() {
 		var obj = obj();
 		if (!(obj instanceof Collection))
 			return null;
@@ -62,9 +82,20 @@ abstract class IrisJsonItem {
 		return new ArrayList<>((Collection<A>)obj);
 	}
 
-	public Map<String, Object> asObject() {
+	public <A>List<A> asList() {
 		var obj = obj();
-		return obj == null? null : (Map<String, Object>)obj();
+		if (obj instanceof List)
+			return (List<A>)obj;
+		return new ArrayList<>((Collection<A>)obj);
+	}
+
+	public Map<String, Object> asMapOrNull() {
+		var obj = obj();
+		return obj == null? null : (Map<String, Object>)obj;
+	}
+
+	public Map<String, Object> asMap() {
+		return (Map<String, Object>)obj();
 	}
 
 	public IrisJsonItem find(String[] tree) {

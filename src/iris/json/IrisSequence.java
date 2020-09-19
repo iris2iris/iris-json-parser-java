@@ -28,7 +28,7 @@ class IrisSequence implements CharSequence {
 
 	@Override
 	public CharSequence subSequence(int start, int end) {
-		return new IrisSequence(source, start + start, start + end);
+		return new IrisSequence(source, this.start + start, this.start + end);
 	}
 
 	@Override
